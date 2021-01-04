@@ -1,50 +1,3 @@
-//HEADLESS=0 make px4_sitl jmavsim
-//cd Documents/Johnnette_tech/GCS_cpp/Firmware
-// mkdir build && cd build
-// cmake ..
-// make
-// -------OR----------
-// cmake CMakeLists.txt
-// make all or make cmake_hello
-// ./GCS udp://:14540
-// #include <mavsdk/mavsdk.h>
-// #include <mavsdk/plugins/action/action.h>
-// #include <mavsdk/plugins/telemetry/telemetry.h>
-// #include <iostream>
-// #include <thread>
-// #include <chrono>
-// #include <cstdint>
-// #include <future>
-// int main(){
-// mavsdk::Mavsdk mavsdk1;
-// std::string connection_url="udp://:14540";
-// mavsdk::ConnectionResult connection_result = mavsdk1.add_any_connection(connection_url);
-// //ASSERT_EQ(connection_result, mavsdk::ConnectionResult::Success)
-// if (connection_result != mavsdk::ConnectionResult::Success) {
-//         std::cout <<"Connection failed: " << connection_result << std::endl;
-//         return 1;
-//     }
-// auto new_system_promise = std::promise<std::shared_ptr<mavsdk::System>>{};
-// auto new_system_future = new_system_promise.get_future();
-// mavsdk1.subscribe_on_new_system([&mavsdk1, &new_system_promise]() {
-//     new_system_promise.set_value(mavsdk1.systems().at(0));
-//     mavsdk1.subscribe_on_new_system(nullptr);
-//     });
-// // while (mavsdk1.systems().size() == 0) {
-// //     std::this_thread::sleep_for(std::chrono::seconds(1));
-// // }
-// auto system = new_system_future.get();
-// system->subscribe_is_connected([](bool is_connected) {
-//     if (is_connected) {
-//         std::cout << "System has been discovered" << '\n';
-//     } else {
-//         std::cout << "System has timed out" << '\n';
-//     }
-// });
-// return 0;
-// }
-
-
 #include <chrono>
 #include <cstdint>
 #include <mavsdk/mavsdk.h>
@@ -274,6 +227,11 @@ mission_mode(mission);
 land(action, telemetry);
 log_entries(log_files);
 }
+
+
+
+
+
 int arm(Action& action, Telemetry& telemetry)
 {
     //Check if vehicle is ready to arm
@@ -294,6 +252,8 @@ int arm(Action& action, Telemetry& telemetry)
     }
     return 1;
 }
+
+
 int rtl(Action& action)
 {
     //RTL
@@ -329,6 +289,8 @@ int set_takeoff_altitude_m(Action& action, float alt)
     }
     return 1;
 }
+
+
 int set_rtl_altitude_m(Action& action, float alt)
 {
     //Disarm
@@ -340,6 +302,8 @@ int set_rtl_altitude_m(Action& action, float alt)
     }
     return 1;
 }
+
+
 int take_off(Action& action)
 {
     //Take off
@@ -403,6 +367,7 @@ int mission_mode(Mission& mission)
         sleep_for(seconds(1));
     }
 }
+
 // {
 //     auto prom = std::make_shared<std::promise<Mission::Result>>();
 //     auto future_result = prom->get_future();
@@ -432,6 +397,7 @@ int pause_mission(Mission& mission)
         }
         return 1;
     }
+    
 int mission_upload(Mission& mission)
 {       
     std::vector<Mission::MissionItem> mission_items;

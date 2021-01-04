@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/vivek/Documents/Johnnette_tech/GCS_cpp/build",
+  "command": "/usr/bin/g++-9 -isystem /usr/include/mavsdk -g   -Wall -Wextra -Werror -std=gnu++17 -o CMakeFiles/GCS.dir/main.cpp.o -c /home/vivek/Documents/Johnnette_tech/GCS_cpp/main.cpp",
+  "file": "/home/vivek/Documents/Johnnette_tech/GCS_cpp/main.cpp"
+}
+]

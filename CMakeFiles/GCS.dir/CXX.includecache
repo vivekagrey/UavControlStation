@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/vivek/Documents/Johnnette_tech/GCS_cpp/main.cpp
+chrono
+-
+cstdint
+-
+mavsdk/mavsdk.h
+-
+mavsdk/plugins/log_files/log_files.h
+-
+mavsdk/plugins/action/action.h
+-
+mavsdk/plugins/mission/mission.h
+-
+mavsdk/plugins/telemetry/telemetry.h
+-
+functional
+-
+iostream
+-
+thread
+-
+future
+-
+
